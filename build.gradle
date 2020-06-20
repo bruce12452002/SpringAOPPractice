@@ -9,9 +9,17 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+ext {
+    springVersion = '5.2.7.RELEASE'
+}
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile group: 'org.springframework', name: 'spring-context', version: '5.2.7.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version: springVersion
     compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.5'
-    testCompile group: 'org.springframework', name: 'spring-test', version: '5.2.7.RELEASE'
+    testCompile group: 'org.springframework', name: 'spring-test', version: springVersion
 }

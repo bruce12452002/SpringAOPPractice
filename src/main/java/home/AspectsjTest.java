@@ -11,37 +11,37 @@ import java.util.List;
 @Component
 public class AspectsjTest {
 
-    @Pointcut("execution(public int home.MathDivide.*(..))")
+    @Pointcut("execution(public Integer home.MathDivide.*(..))")
     public void pc() {
     }
 
-    @Before("pc()") // ¤]¥i±N @Pointcut ¸Ìªº¥ş¼g¦b³o¡A¦ı¦³¦h­Ó¦a¤è­n¥Î¡A©Ò¥H´£¥X¨Ó¤F
+    @Before("pc()") // ä¹Ÿå¯å°‡ @Pointcut è£¡çš„å…¨å¯«åœ¨é€™ï¼Œä½†æœ‰å¤šå€‹åœ°æ–¹è¦ç”¨ï¼Œæ‰€ä»¥æå‡ºä¾†äº†
     public void begin(JoinPoint jp) {
-        // jp.getSignature().getName() ¬°¤èªk¦WºÙ
-        System.out.println("«e¸m³qª¾¡A°Ñ¼Æ¬°=" + List.of(jp.getArgs()));
+        // jp.getSignature().getName() ç‚ºæ–¹æ³•åç¨±
+        System.out.println("å‰ç½®é€šçŸ¥ï¼Œåƒæ•¸ç‚º=" + List.of(jp.getArgs()));
     }
 
-    @After("home.AspectsjTest.pc()") // ¦pªG pc() ¦b¦Û¤vªºÃş§O¡A¥i¥H¥u¼g¤èªk¦W©M¬A¸¹´N¦n¤F¡F µo¥Í¨Ò¥~¤]·|°õ¦æ
+    @After("home.AspectsjTest.pc()") // å¦‚æœ pc() åœ¨è‡ªå·±çš„é¡åˆ¥ï¼Œå¯ä»¥åªå¯«æ–¹æ³•åå’Œæ‹¬è™Ÿå°±å¥½äº†ï¼› ç™¼ç”Ÿä¾‹å¤–ä¹ŸæœƒåŸ·è¡Œ
     public void end(JoinPoint jp) {
-        System.out.println("«á¸m³qª¾");
+        System.out.println("å¾Œç½®é€šçŸ¥");
     }
 
-    // JoinPoint ¦pªG­n¼g¡A´N¤@©w­n¼g¦b²Ä¤@­Ó°Ñ¼Æ
+    // JoinPoint å¦‚æœè¦å¯«ï¼Œå°±ä¸€å®šè¦å¯«åœ¨ç¬¬ä¸€å€‹åƒæ•¸
     @AfterReturning(value = "pc()", returning = "rt")
     public void rtn(JoinPoint jp, Object rt) {
-        System.out.println("¦^¶Ç­È³qª¾¡A¦^¶Ç­È¬°=" + rt);
+        System.out.println("å›å‚³å€¼é€šçŸ¥ï¼Œå›å‚³å€¼ç‚º=" + rt);
     }
 
     @AfterThrowing(value = "pc()", throwing = "ext")
     public void throwing(JoinPoint jp, Exception ext) {
-        System.out.println("¨Ò¥~³qª¾¡A¨Ò¥~¬°=" + ext);
+        System.out.println("ä¾‹å¤–é€šçŸ¥ï¼Œä¾‹å¤–ç‚º=" + ext);
     }
 
     @Around("pc()")
     public void around(ProceedingJoinPoint pjp) throws Throwable {
-        System.out.println("ÀôÂ¶³qª¾¶}©l");
-        // ¤£ proceed ´N¤£¯à©¹¤U¨«¡Apjp ¸Ì¦³«Ü¦hªF¦è¡A¥i¥H§PÂ_¤@¨Ç­È¡A¦A¨M©w­n¤£­n proceed
+        System.out.println("ç’°ç¹é€šçŸ¥é–‹å§‹");
+        // ä¸ proceed å°±ä¸èƒ½å¾€ä¸‹èµ°ï¼Œpjp è£¡æœ‰å¾ˆå¤šæ±è¥¿ï¼Œå¯ä»¥åˆ¤æ–·ä¸€äº›å€¼ï¼Œå†æ±ºå®šè¦ä¸è¦ proceed
         pjp.proceed();
-        System.out.println("ÀôÂ¶³qª¾µ²§ô"); // ¦¹¦æµo¥Í¨Ò¥~¤£·|°õ¦æ
+        System.out.println("ç’°ç¹é€šçŸ¥çµæŸ"); // æ­¤è¡Œç™¼ç”Ÿä¾‹å¤–ä¸æœƒåŸ·è¡Œ
     }
 }

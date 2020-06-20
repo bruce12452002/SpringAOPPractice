@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestAop {
     @Test
     @Ignore
-    public void testAop1() { // ¶π§Ë™k§£ª›≠n @RunWith ©M @ContextConfiguration
+    public void testAop1() { // Ê≠§ÊñπÊ≥ï‰∏çÈúÄË¶Å @RunWith Âíå @ContextConfiguration
         AnnotationConfigApplicationContext app = new AnnotationConfigApplicationContext(AopStart.class);
 
         MathDivide m = app.getBean(MathDivide.class);
@@ -27,6 +27,6 @@ public class TestAop {
 
     @Test
     public void testAop2() {
-        div.divide(100, 0);
+        div.divide(100, 100);
     }
 }

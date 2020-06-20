@@ -4,7 +4,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
 
-@EnableAspectJAutoProxy // ·|¦Û°Ê§ä¦³ @Aspect ªºµù¸Ñ
+@EnableAspectJAutoProxy // æœƒè‡ªå‹•æ‰¾æœ‰ @Aspect çš„è¨»è§£
 @Component
 @ComponentScan("home")
 public class AopStart {

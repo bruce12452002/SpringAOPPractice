@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MathDivide {
-    public int divide(int x, int y) {
+    public Integer divide(int x, int y) {
         return x / y;
     }
 

@@ -15,6 +15,10 @@ public class AspectsjTest {
     public void pc() {
     }
 
+    @Pointcut("@annotation(home.Bruce)") // 抓 @Bruce
+    public void aaa() {
+    }
+
     @Before("pc()") // 也可將 @Pointcut 裡的全寫在這，但有多個地方要用，所以提出來了
     public void begin(JoinPoint jp) {
         // jp.getSignature().getName() 為方法名稱
@@ -37,6 +41,7 @@ public class AspectsjTest {
         System.out.println("例外通知，例外為=" + ext);
     }
 
+//    @Around("aaa()")
     @Around("pc()")
     public void around(ProceedingJoinPoint pjp) throws Throwable {
         System.out.println("環繞通知開始");
